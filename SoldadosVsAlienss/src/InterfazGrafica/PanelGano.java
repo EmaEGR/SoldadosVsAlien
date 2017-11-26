@@ -1,3 +1,4 @@
+
 package InterfazGrafica;
 
 import javax.swing.JFrame;
@@ -14,20 +15,20 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class panelGameOver extends JFrame{
+public class PanelGano extends JFrame{
 	protected Container contenedor = getContentPane();
-	protected panelGameOver panel;
+	protected PanelGano panel;
 	
 	protected ImageIcon imagenBotonFlechaAdelante;
 	protected ImageIcon imagenBotonFlechaAtras;
 	protected Icon iconoBotonFlechaAdelante;
 	protected Icon iconoBotonFlechaAtras;
-	protected ImagenGameOver panelPrincipal;
+	protected ImagenPanelGano panelPrincipal;
 	
 	protected JButton botonVolverMenu;
 	protected JButton botonSalir;
 	
-	public panelGameOver() {
+	public PanelGano() {
 		panel = this;
 		
 		botonVolverMenu = new JButton("");
@@ -50,9 +51,9 @@ public class panelGameOver extends JFrame{
 		this.setIconImage(new ImageIcon(getClass().getResource("/Sprites/fondo/IconoMenu.jpg")).getImage());
 		this.setResizable(false);
 		
-		panelPrincipal = new ImagenGameOver();
+		panelPrincipal = new ImagenPanelGano();
 		panelPrincipal.setLayout(null);
-		setBounds(100,30,800,500);
+		setBounds(100,30,798,500);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
@@ -75,9 +76,5 @@ public class panelGameOver extends JFrame{
 		});
 		panelPrincipal.add(botonSalir);
 	}
-	
-	
-	
-	
 	
 }

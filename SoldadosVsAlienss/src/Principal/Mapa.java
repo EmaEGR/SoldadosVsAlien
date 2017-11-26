@@ -71,6 +71,9 @@ public class Mapa {
 		return null;
 	}
 	
+	public void setPanelMapa(JPanel p) {
+		panel = p;
+	}
 	
 	public Celda puedeInsertar(Celda c) {
 		Celda celdaVecina = getCelda(c.getFila()+1, c.getColumna());
@@ -195,18 +198,21 @@ public class Mapa {
 					 	factory = new A3factory(panel);
 		}
 		else {
-			if (orda == 1)
-				factory = new A4factory(panel);
+			if (orda == 1) {
+				System.out.println("Entre a crear alien 4");	
+				factory = new A5factory(panel);
+			}
 			else if (orda == 2)
 					factory = new A5factory(panel);
 				 else if (orda == 3)
 					 	factory = new A6factory(panel);
 			
 		}
+		System.out.println("Celda = "+c);
 		p = factory.createPersonaje(c);
-		 
-		// int r = (int) (Math.random() * 10)+1;
-		int r = 3;
+		System.out.println("P2 = "+p);
+		 int r = (int) (Math.random() * 10)+1;
+		
 		 if (r == 1) {
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 			p.setMagiaTemporal(f2.crearMagia());
