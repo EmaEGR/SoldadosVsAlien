@@ -1,16 +1,19 @@
 package Hilos;
 
-import Estate.EstadoCampo;
-import Estate.EstadosinMagia;
+
+
+import Objetos.Obstaculo;
 import Principal.Logica;
 
-public class HilosObjetoPreciosoPiedra  extends Thread{
+public class HiloMagia extends Thread{
+	protected Obstaculo ob;
 	
 	private Logica l;
 	private volatile boolean execute;	
 		
-	public HilosObjetoPreciosoPiedra  (Logica l ) {
+	public HiloMagia  (Logica l,Obstaculo o ) {
 		this.l = l;
+		ob = o;
 		 
 		 
 	}	
@@ -27,7 +30,9 @@ public class HilosObjetoPreciosoPiedra  extends Thread{
 			 
 			while (execute) {			
 				System.out.println("Entre a objetoPrecioso piedra");
-				Thread.sleep(80000);
+				Thread.sleep(6000);
+				if  ( ob != null)
+					l.eliminar(ob);
 				execute = false;
 			}
 			} catch (InterruptedException e2) {

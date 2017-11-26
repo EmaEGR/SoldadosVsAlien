@@ -36,7 +36,7 @@ public class HiloLogico extends Thread {
 		try {	
 			while (esperar && l.getjuegoActivo()) {
 				System.out.println("");
-				//Thread.sleep(2000);
+				Thread.sleep(500);
 				hiloInsertarAlien.run();
 				while (esperar)
 					Thread.sleep(200);

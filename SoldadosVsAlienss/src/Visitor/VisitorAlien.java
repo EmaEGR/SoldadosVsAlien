@@ -13,8 +13,10 @@ import Personajes.Alien;
 import Personajes.Personaje;
 import Personajes.Soldado;
 import PowerUps.Bomba;
+import PowerUps.Campo_de_Proteccion;
 import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
+import PowerUps.ObjetoPrecioso;
 import PowerUps.Piedra;
 
 public class VisitorAlien implements Visitor {
@@ -29,6 +31,8 @@ public class VisitorAlien implements Visitor {
 		myEstado = e;
 	}
 
+	//---------------------------------------------------VISIT-----------------------------------------------
+	
 	public void visit(Alien a) {
 		 
 	}
@@ -68,14 +72,45 @@ public class VisitorAlien implements Visitor {
  
 	public void visit(ObjetoPiedra a) {
 		a.setVida(a.getVida()*myAlien.getFuerza());
-		
-	 
 	}
 
+	public void visit(ObjetoVidaComprar a) {
+		 
+		a.setVida(a.getVida()*myAlien.getFuerza());
+	}
+
+	@Override
+	public void visit(Bomba b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(Fuerza b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(Piedra p) {
+		// TODO Auto-generated method stub	
+	}
+	
+	public void visit(Campo_de_Proteccion c) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	//-----------------------------------------------------puedoPasar----------------------------------------
 	public boolean puedoPasar(Bala a) {
 		return false;
 	}
 
+	public boolean puedoPasar(ObjetoVidaComprar a) {
+		 
+		return false;
+	}
+	
 	public boolean puedoPasar(Alien a) {
 		return false;
 	}
@@ -84,20 +119,6 @@ public class VisitorAlien implements Visitor {
 		return false;
 	}
 	
-
-
-	public boolean Atacar(MagiaTemporal m) {
-	 
-		return false;
-	}
-
- 
-	public void visit(MagiaTemporal m) {
-	 
-		
-	}
-
- 
 	public boolean puedoPasar(ObjetoTemporal a) {
 		return false;
 	}
@@ -107,49 +128,41 @@ public class VisitorAlien implements Visitor {
 		return false;
 	}
 
-	 
 	public boolean puedoPasar(ObjetoFuego a) {
 		 
 		return false;
 	}
 
- 
 	public boolean puedoPasar(ObjetoFuente a) {
 	 
 		return false;
 	}
 
- 
-	public boolean puedoPasar(ObjetoPiedra a) {
-	 
-		return false;
-	}
-
- 
 	public boolean puedoPasar(ObjetoVida a) {
 		 
 		return false;
 	}
-
-	 
-	public boolean puedoPasar(MagiaTemporal m) {
-		 
-		return true;
-	}
 	
-	
-	
-	
-
-	
-	
-	 
-	public boolean Atacar(ObjetoTemporal a) {
-	 
+	@Override
+	public boolean puedoPasar(ObjetoPiedra a) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
-	 
+	@Override
+	public boolean puedoPasar(MagiaTemporal m) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoPrecioso o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	//-----------------------------------------------------Atacar--------------------------------------------
+ 
 	public boolean Atacar(ObjetoAgua a) {
 		 
 		return false;
@@ -164,7 +177,7 @@ public class VisitorAlien implements Visitor {
 	 
 	public boolean Atacar(ObjetoFuente a) {
 		 
-		return false;
+		return true;
 	}
 
 	 
@@ -196,46 +209,9 @@ public class VisitorAlien implements Visitor {
 		 
 		return true;
 	}
-
-	 //Alien le saca vida a objeto comprado
-	public void visit(ObjetoVidaComprar a) {
-		 
-		a.setVida(a.getVida()*myAlien.getFuerza());
-	}
-
- 
-	public boolean puedoPasar(ObjetoVidaComprar a) {
-		 
-		return false;
-	}
-
 	 
 	public boolean Atacar(ObjetoVidaComprar a) {
 		return true;
-	}
-
-	@Override
-	public void visit(Bomba b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void visit(Fuerza b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void visit(Piedra p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean puedoPasar(Piedra p) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 

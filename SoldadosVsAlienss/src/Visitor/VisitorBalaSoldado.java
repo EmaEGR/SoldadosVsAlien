@@ -11,8 +11,10 @@ import Objetos.ObjetoVidaComprar;
 import Personajes.Alien;
 import Personajes.Soldado;
 import PowerUps.Bomba;
+import PowerUps.Campo_de_Proteccion;
 import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
+import PowerUps.ObjetoPrecioso;
 import PowerUps.Piedra;
 
 public class VisitorBalaSoldado implements Visitor{
@@ -22,7 +24,7 @@ public class VisitorBalaSoldado implements Visitor{
 	public void setBala (Bala b){
 		  myDisparoSoldado = b;
 	}
-	 
+	//----------------------------------------------------Visit----------------------------------------------
 	public void visit(Alien a) {
 		a.setVida(20);
 	}
@@ -63,12 +65,47 @@ public class VisitorBalaSoldado implements Visitor{
 	 
 	}
 
+	public void visit(ObjetoVidaComprar a) {
 	 
+		
+	}
+	 
+	@Override
+	public void visit(Campo_de_Proteccion c) {
+		// TODO Auto-generated method stub
+		
+	}
+ 
 	public void visit(ObjetoPiedra a) {
 	 
 	}
+	
+	@Override
+	public void visit(Bomba b) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void visit(Fuerza b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(Piedra p) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	//----------------------------------------------------puedoPasar----------------------------------------
+	
 	public boolean puedoPasar(Bala a) {
+		return false;
+	}
+	
+	public boolean puedoPasar(ObjetoVidaComprar a) {
+		 
 		return true;
 	}
 
@@ -80,12 +117,6 @@ public class VisitorBalaSoldado implements Visitor{
 		return true;
 	}
 	
-	@Override
-	public void visit(MagiaTemporal m) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public boolean puedoPasar(ObjetoTemporal a) {
 		// TODO Auto-generated method stub
@@ -128,13 +159,14 @@ public class VisitorBalaSoldado implements Visitor{
 		return true;
 	}
 	
-	 
-	public boolean Atacar(ObjetoTemporal a) {
-		 
-		return false;
+	@Override
+	public boolean puedoPasar(ObjetoPrecioso o) {
+		// TODO Auto-generated method stub
+		return true;
 	}
+	
+	//-----------------------------------------------------------Atacar-------------------------------------- 
 
-	 
 	public boolean Atacar(ObjetoAgua a) {
 	 
 		return false;
@@ -181,53 +213,12 @@ public class VisitorBalaSoldado implements Visitor{
 	 
 		return false;
 	}
-
-	 
-	public boolean Atacar(MagiaTemporal m) {
-	 
-		return false;
-	}
-
- 
-	public void visit(ObjetoVidaComprar a) {
-	 
-		
-	}
-
-	 
-	public boolean puedoPasar(ObjetoVidaComprar a) {
-		 
-		return false;
-	}
-
 	 
 	public boolean Atacar(ObjetoVidaComprar a) {
 	 
 		return false;
 	}
-
-	@Override
-	public void visit(Bomba b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void visit(Fuerza b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void visit(Piedra p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean puedoPasar(Piedra p) {
-		// TODO Auto-generated method stub
-		return false;
-	}
- 
+	
+	
+	
 }

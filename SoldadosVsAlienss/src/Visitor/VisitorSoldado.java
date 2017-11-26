@@ -13,8 +13,10 @@ import Personajes.Alien;
 	import Personajes.Personaje;
 	import Personajes.Soldado;
 import PowerUps.Bomba;
+import PowerUps.Campo_de_Proteccion;
 import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
+import PowerUps.ObjetoPrecioso;
 import PowerUps.Piedra;
 	
 	public class VisitorSoldado implements Visitor {
@@ -24,13 +26,38 @@ import PowerUps.Piedra;
 	public void setSoldado (Personaje a){
 		mySoldado = a;
 	}
+	
+	public void setEstado (Estado e) {
+		myEstado = e;
+	}
+	
+	//---------------------------------------------------Visit----------------------------------------------
 	public void visit(Alien a) {
 		//System.out.println("VISITOR SOLDADO : Fuerza Soldado"+mySoldado.getFuerza()+" Fuerza Alien:"+a.getFuerza()+" Vida Alien :"+a.getVida()+ " Vida Soldado :"+mySoldado.getVida());
 		myEstado.disminuirVida(mySoldado.getFuerza(),a);
 		 
 	}
-	public void setEstado (Estado e) {
-		myEstado = e;
+	
+	@Override
+	public void visit(Bomba b) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void visit(Fuerza b) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void visit(Piedra p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(Campo_de_Proteccion c) {
+		// TODO Auto-generated method stub
+		
 	}
 	public void visit(Soldado a) {
 		
@@ -60,15 +87,27 @@ import PowerUps.Piedra;
 		 
 		
 	}
+	public void visit(ObjetoVidaComprar a) {
+		 
+		
+	}
 	 
 	public void visit(ObjetoPiedra a) {
 		 
 	}
-	 
+	
+	//------------------------------------------------puedoPasar---------------------------------------------
 	public boolean puedoPasar(Bala a) {
 		 
 		return false;
 	}
+	@Override
+	public boolean puedoPasar(ObjetoPrecioso o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
 	 
 	public boolean puedoPasar(Alien a) {
 		 
@@ -80,11 +119,6 @@ import PowerUps.Piedra;
 		return false;
 	}
 	
-	@Override
-	public void visit(MagiaTemporal m) {
-		// TODO Auto-generated method stub
-		
-	}
 	@Override
 	public boolean puedoPasar(ObjetoTemporal a) {
 		// TODO Auto-generated method stub
@@ -121,6 +155,11 @@ import PowerUps.Piedra;
 		return false;
 	}
 	
+	public boolean puedoPasar(ObjetoVidaComprar a) {
+		 
+		return false;
+	}
+	//----------------------------------------------Atacar----------------------------------------------------
 	public boolean Atacar(ObjetoTemporal a) {
 		 
 		return false;
@@ -170,40 +209,11 @@ import PowerUps.Piedra;
 		return false;
 	}
 	 
-	public void visit(ObjetoVidaComprar a) {
-		 
-		
-	}
-	 
-	public boolean puedoPasar(ObjetoVidaComprar a) {
-	 
-		return false;
-	}
-	 
 	public boolean Atacar(ObjetoVidaComprar a) {
 		 
 		return false;
 	}
-	@Override
-	public void visit(Bomba b) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void visit(Fuerza b) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void visit(Piedra p) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public boolean puedoPasar(Piedra p) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 	
 	
 	}

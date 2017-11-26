@@ -10,13 +10,14 @@ import Objetos.ObjetoVida;
 import Objetos.ObjetoVidaComprar;
 import Personajes.*;
 import PowerUps.Bomba;
+import PowerUps.Campo_de_Proteccion;
 import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
+import PowerUps.ObjetoPrecioso;
 import PowerUps.Piedra;
 
 public interface Visitor {
 	public void visit (ObjetoTemporal o);
-	public void visit (MagiaTemporal m);
 	public void visit (ObjetoAgua a);
 	public void visit (ObjetoFuego a);
 	public void visit (ObjetoFuente a);
@@ -29,7 +30,8 @@ public interface Visitor {
 	public void visit (Bomba b);
 	public void visit (Fuerza b);
 	public void visit (Piedra p);
-
+	public void visit (Campo_de_Proteccion c);
+ 
 
 	public boolean puedoPasar (ObjetoTemporal a);
 	public boolean puedoPasar (ObjetoAgua a);
@@ -40,12 +42,11 @@ public interface Visitor {
 	public boolean puedoPasar (Alien a );
 	public boolean puedoPasar (Soldado a );
 	public boolean puedoPasar (ObjetoVida a );
-	public boolean puedoPasar (ObjetoVidaComprar a );
+	public boolean puedoPasar (ObjetoVidaComprar a);
 	public boolean puedoPasar (MagiaTemporal m);
-	public boolean puedoPasar (Piedra p);
+	public boolean puedoPasar (ObjetoPrecioso o);
 
 	
-	public boolean Atacar (ObjetoTemporal a);
 	public boolean Atacar (ObjetoAgua a);
 	public boolean Atacar (ObjetoFuego a);
 	public boolean Atacar (ObjetoFuente a);
@@ -55,6 +56,5 @@ public interface Visitor {
 	public boolean Atacar (Soldado a );
 	public boolean Atacar (ObjetoVida a );
 	public boolean Atacar (ObjetoVidaComprar a );
-	public boolean Atacar (MagiaTemporal m);
 
-	}
+}
