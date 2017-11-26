@@ -1,20 +1,20 @@
 package Hilos;
 
-import Estate.EstadoCampo;
-import Estate.EstadosinMagia;
-import PowerUps.Bomba;
-import PowerUps.ObjetoPrecioso;
+
+
+import Objetos.Obstaculo;
 import Principal.Logica;
 
-public class HiloBomba  extends Thread{
+public class HiloObjetoPreciosoPiedra extends Thread{
+	protected Obstaculo ob;
 	
 	private Logica l;
 	private volatile boolean execute;	
-	private ObjetoPrecioso bomba;
 		
-	public HiloBomba  (Logica l,ObjetoPrecioso b ) {
+	public HiloObjetoPreciosoPiedra  (Logica l,Obstaculo o ) {
 		this.l = l;
-		bomba = b;
+		ob = o;
+		 
 		 
 	}	
 	
@@ -29,9 +29,10 @@ public class HiloBomba  extends Thread{
 			this.execute = true;
 			 
 			while (execute) {			
-				Thread.sleep(800);
-				l.eliminar(bomba);
-				l.getBombas().remove(bomba);
+				System.out.println("Entre a objetoPrecioso piedra");
+				Thread.sleep(10000);
+				if  ( ob != null)
+					l.eliminar(ob);
 				execute = false;
 			}
 			} catch (InterruptedException e2) {
@@ -40,3 +41,5 @@ public class HiloBomba  extends Thread{
 	}
 	 
 }
+
+ 

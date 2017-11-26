@@ -6,7 +6,7 @@ import Visitor.Visitor;
 
 
 
-public  class ObjetoPrecioso extends Obstaculo {
+public abstract class ObjetoPrecioso extends Obstaculo {
 		
 		 
 		
@@ -16,24 +16,16 @@ public  class ObjetoPrecioso extends Obstaculo {
 
 		}
 
-		 
-		/**public void  setCeldaMagia (Celda c) {
-			this.pos = c;
-			
-		}**/
 		
-		public void accept(Visitor v) {	
-			
-		}
-
 		 
 		public boolean dejoPasar(Visitor v) {
 			 
-			return false;
+			return v.puedoPasar(this);
 		}
 
 
 		public boolean puedoAtacar(Visitor v) {
+			
 			return false;
 		}
 		

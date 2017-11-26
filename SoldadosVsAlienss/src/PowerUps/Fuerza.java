@@ -20,17 +20,7 @@ public class Fuerza extends MagiaTemporal {
 		
 	}
 
-	 
-	public boolean dejoPasar(Visitor v) {
-		
-		return v.puedoPasar(this);
-	}
 
-
- 
-	public boolean puedoAtacar(Visitor v) {
-		return v.Atacar(this);
-	}
 	
 	
 }

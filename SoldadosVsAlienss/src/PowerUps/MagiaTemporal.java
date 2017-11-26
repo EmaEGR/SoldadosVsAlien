@@ -15,24 +15,15 @@ public abstract class MagiaTemporal extends Obstaculo {
 
 	}
 
-	 
-	public void  setCeldaMagia (Celda c) {
-		this.pos = c;
-		
-	}
-	/*
-	public abstract void accept(Visitor v) {
-		// v.visit(this);
-		
-	}
-
-	 
 	public boolean dejoPasar(Visitor v) {
 		 
-		return false;
+		return v.puedoPasar(this);
 	}
-	*/
-	
+
+ 
+	public boolean puedoAtacar(Visitor v) {
+		 return false;
+	}
 	 
 	
 

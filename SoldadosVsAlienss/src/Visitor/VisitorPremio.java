@@ -14,6 +14,7 @@ import PowerUps.Bomba;
 import PowerUps.Campo_de_Proteccion;
 import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
+import PowerUps.ObjetoPrecioso;
 import PowerUps.Piedra;
 import Principal.Celda;
 import Principal.Logica;
@@ -25,6 +26,7 @@ public class VisitorPremio  implements Visitor{
 		this.l = l;
 	}
 	 
+	//-------------------------------------------------Visit--------------------------------------------
 	public void visit(ObjetoTemporal o) {
 		
 		
@@ -36,17 +38,19 @@ public class VisitorPremio  implements Visitor{
 
 	}
  
-	
+	public void visit(Piedra p) {
+		System.out.println("Entre a visitar Piedra ");
+		l.getPiedras().addLast(p);
+		l.getGui().incrementarPiedra();
+		l.getMapaCombate().eliminar(p);
+	}
 	
 	public void visit (Bomba b) {
  
 		System.out.println("Entre a visitar BOMBA ");
 		l.getBombas().addLast(b);
 		l.getGui().incrementarBomba();
-		
-		Celda c = b.getCelda();
-		l.getMapaCombate().setCeldaMapa(c.getFila(), c.getColumna(), null);
-		l.getMapaCombate().eliminar(b);
+		l.eliminar(b);
 		 
  
 	}
@@ -54,10 +58,7 @@ public class VisitorPremio  implements Visitor{
 	public void visit (Fuerza b) {
 		System.out.println("Entre a visitar FUERZA");
 		l.activarMagia_Fuerza();
-		l.getMapaCombate().eliminar(b);
-		Celda c = b.getCelda();
-		l.getMapaCombate().setCeldaMapa(c.getFila(), c.getColumna(), null);
-		 
+		l.eliminar(b);
 		 
 	}
 	
@@ -106,9 +107,7 @@ public class VisitorPremio  implements Visitor{
 	
  	public void visit(Soldado a) {
 		int monedas = l.getMonedas();
-		l.getMapaCombate().eliminar(a);
-		Celda c = a.getCelda();
-		l.getMapaCombate().setCeldaMapa(c.getFila(), c.getColumna(), null);
+		l.eliminar(a);
 		if ( a.getVida() != 100) {
 			monedas = l.getMonedas();
 			monedas += a.getVida()*0.5;
@@ -135,6 +134,7 @@ public class VisitorPremio  implements Visitor{
 		// TODO Auto-generated method stub
 		
 	}
+	//--------------------------------------------------------puedoPasar--------------------------------------
 
 	@Override
 	public boolean puedoPasar(ObjetoTemporal a) {
@@ -154,6 +154,12 @@ public class VisitorPremio  implements Visitor{
 		return false;
 	}
 
+	@Override
+	public boolean puedoPasar(ObjetoPrecioso o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 	@Override
 	public boolean puedoPasar(ObjetoFuente a) {
 		// TODO Auto-generated method stub
@@ -202,11 +208,7 @@ public class VisitorPremio  implements Visitor{
 		return false;
 	}
 
-	@Override
-	public boolean Atacar(ObjetoTemporal a) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	//-------------------------------------------------------Atacar-------------------------------------------
 
 	@Override
 	public boolean Atacar(ObjetoAgua a) {
@@ -262,24 +264,10 @@ public class VisitorPremio  implements Visitor{
 		return false;
 	}
 
-	@Override
-	public boolean Atacar(MagiaTemporal m) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
- 
-	public void visit(Piedra p) {
-		System.out.println("Entre a visitar Piedra ");
-		l.getPiedras().addLast(p);
-		l.getGui().incrementarPiedra();
-		l.getMapaCombate().eliminar(p);
-	}
 
-	@Override
-	public boolean puedoPasar(Piedra p) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
+
 
 }

@@ -179,7 +179,7 @@ public class Mapa {
 	public Alien insertarEnemigo(AlienFactoryMethod factory, int nivel, int orda) {
 		int x = (int ) (Math.random() * 5);
 		Celda c = new Celda(x,11);
-		while (c.getElemento() != null) {
+		while (c.getElemento() != null & siguienteCeldaIzq(c).getElemento() != null) {
 			x = (int ) (Math.random() * 5);
 			c.set(x, 11);;
 		}
@@ -290,7 +290,7 @@ public class Mapa {
 			if (o != null) {
 				if (o.puedoAtacar(vb)) {
 					o.actualizarGrafico(2);
-					setCeldaMapa(c.getFila(),c.getColumna(),null);			
+					setCeldaMapa(celda.getFila(),celda.getColumna(),null);			
 					eliminados.add(o);
 				}
 			}
