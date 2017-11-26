@@ -43,23 +43,28 @@ public class VisitorPremio  implements Visitor{
 		System.out.println("Entre a visitar BOMBA ");
 		l.getBombas().addLast(b);
 		l.getGui().incrementarBomba();
+		
+		Celda c = b.getCelda();
+		l.getMapaCombate().setCeldaMapa(c.getFila(), c.getColumna(), null);
 		l.getMapaCombate().eliminar(b);
 		 
  
 	}
 	
-	public void visit (Fuerza f) {
+	public void visit (Fuerza b) {
 		System.out.println("Entre a visitar FUERZA");
 		l.activarMagia_Fuerza();
-		l.getMapaCombate().eliminar(f);
+		l.getMapaCombate().eliminar(b);
+		Celda c = b.getCelda();
+		l.getMapaCombate().setCeldaMapa(c.getFila(), c.getColumna(), null);
 		 
 		 
 	}
 	
-	public void visit (Campo_de_Proteccion c ) {
+	public void visit (Campo_de_Proteccion b ) {
 		System.out.println("Entre a visitar CAMPO PROTECCION");
 		l.activarMagia_Campo();
-		l.getMapaCombate().eliminar(c);
+		l.eliminar(b);
 		 
 		 
 	}
@@ -102,6 +107,8 @@ public class VisitorPremio  implements Visitor{
  	public void visit(Soldado a) {
 		int monedas = l.getMonedas();
 		l.getMapaCombate().eliminar(a);
+		Celda c = a.getCelda();
+		l.getMapaCombate().setCeldaMapa(c.getFila(), c.getColumna(), null);
 		if ( a.getVida() != 100) {
 			monedas = l.getMonedas();
 			monedas += a.getVida()*0.5;

@@ -135,7 +135,7 @@ public class VisitorAlien implements Visitor {
 	 
 	public boolean puedoPasar(MagiaTemporal m) {
 		 
-		return true;
+		return false;
 	}
 	
 	
