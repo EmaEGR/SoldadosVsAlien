@@ -20,6 +20,7 @@ protected JLabel l;
 	}
 	
 	public Alien createPersonaje (Celda c) {
+		System.out.println("Entre a factory 4 Alien");
 		Alien p = new A4(c);
 		c.setElemento(p);
 		l = p.getGrafico(0);

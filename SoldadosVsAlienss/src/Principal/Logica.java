@@ -6,6 +6,7 @@ import PowerUps.MagiaTemporal;
 import PowerUps.ObjetoPrecioso;
 import PowerUps.Piedra;
 
+import java.awt.Panel;
 import java.util.LinkedList;
 
 import javax.swing.JPanel;
@@ -30,6 +31,8 @@ import Hilos.HiloLogico;
 import Hilos.HiloMagiaTemporaCampo;
 import Hilos.HiloMagiaTemporalFuerza;
 import Hilos.HilosObjetoPreciosoPiedra;
+import InterfazGrafica.PanelGano;
+import InterfazGrafica.PanelNivel2;
 import InterfazGrafica.panelGameOver;
 import Factory.S1factory;
 import Factory.S2factory;
@@ -110,25 +113,35 @@ public class Logica {
 		mapaCombate = new Mapa(filas,columnas,p);
 		
 		estadoMagia = new EstadoCampo();
-		
 		ejecutarHilos(juegoActivo);
+	
 	
 	}
 	
 	 
 	
 	public void ejecutarHilos(boolean resultado) {
-		insertarObjetos();	
-		HiloLogico h = new HiloLogico(this);
-		h.start();
+		if(resultado == true) {
+			insertarObjetos();	
+			HiloLogico h = new HiloLogico(this);
+			h.start();
+		}
 	}
 
+	public void setJuegoActivo(boolean j) {
+		juegoActivo = j;
+	}
+	
 	public boolean getjuegoActivo() {
 		return juegoActivo;
 	}
 	
 	public int getNivel() {
 		return nivel;
+	}
+	
+	public void setGUI(Mapa_GUI2 g) {
+		gui = g;
 	}
 	
 	public void setNivel(int n) {
@@ -143,13 +156,11 @@ public class Logica {
 		balasAeliminar.clear();
 		listaObjetosTemporales.clear();
 		listaObjetosComprarVida.clear();
-		
-		gui.fondo(n);
 		this.nivel = n;
 		cantOrdas = 1;
 		cantEnemigos = 12;
-		this.juegoActivo = true;
-		ejecutarHilos(true);	
+		//this.juegoActivo = true;
+		//ejecutarHilos(true);	
 	}
 
 	public LinkedList<Soldado> getSoldados () {
@@ -185,16 +196,30 @@ public class Logica {
 	
 	public void insertarEnemigos() {
 	 if (cantEnemigos != 0) {
+<<<<<<< HEAD
 		if ( aliensMapa.size() == 0) {
 			while ( aliensMapa.size() < 4)
 				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel,cantOrdas));	 
 			
+=======
+		if (aliensMapa.size() == 0) {
+			while ( aliensMapa.size() < 4) {
+				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel,cantOrdas));
+			}	 
+>>>>>>> f1e5021cef690f44c6b73b333d76ebdad2d90ffe
 			cantOrdas++;
 		  }
 	 }
 	 else { juegoActivo = false;
-	 		if (nivel == 1)
+	 		if (nivel == 1) {
+	 			System.out.println("Nivel = "+nivel);
 	 			setNivel(2);
+	 			System.out.println("Nivel2 = "+nivel);
+	 			PanelNivel2 p = new PanelNivel2(gui);
+	 			p.setLocationRelativeTo(null);
+	 			p.setVisible(true);
+	 			gui.setVisible(false);
+	 		}
 	 		else gano();
 	 	  }
 	}
@@ -207,6 +232,11 @@ public class Logica {
 	
 	public void gano() {
 		
+		juegoActivo = false;
+		PanelGano p = new PanelGano();
+		p.setLocationRelativeTo(null);
+		p.setVisible(true);
+		gui.setVisible(false);
 	}
 	
 	public void gameOver() {

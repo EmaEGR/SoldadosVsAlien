@@ -6,6 +6,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import InterfazGrafica.ImagenPanel1;
+import InterfazGrafica.ImagenPanel1_2;
+import InterfazGrafica.ImagenPanel2;
+import InterfazGrafica.ImagenPanel2_2;
+import InterfazGrafica.ImagenPanel3;
+import InterfazGrafica.ImagenPanel3_2;
+import InterfazGrafica.ImagenPanel4;
+import InterfazGrafica.ImagenPanel4_2;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -27,50 +37,50 @@ import javax.swing.SwingConstants;
 
 public class Mapa_GUI2 extends JFrame {
 	
-	//private cambiarGUI c;
-	private Logica logica;
+	//protected cambiarGUI c;
+	protected Logica logica;
 	protected JPanel contentPane;
 	protected Image image;
 	protected Image image2;
 	protected Image image3;
 	protected Image image4;
-	private ImageIcon imagenBotonBomba;
-	private ImageIcon imagenBotonGuardarBomba;
-	private ImageIcon imagenBotonGuardarFuerza;
-	private ImageIcon imagenBotonGuardarCampo;
-	private ImageIcon imagenBotonSalirJuego;
-	private ImageIcon imagenBotonPunio;
-	private ImageIcon imagenBotonFuerza;
-	private ImageIcon imagenTanque;
-	private ImageIcon imagenCampo;
-	private ImageIcon imagenBoton;
-	private ImageIcon imagenBomba;
-	private Icon iconoBotonBomba;
-	private Icon iconoBotonGuardarBomba;
-	private Icon iconoBotonGuardarFuerza;
-	private Icon iconoBotonGuardarCampo;
-	private Icon iconoBotonSalirJuego;
-	private Icon iconoBotonFuerza;
-	private Icon iconoBotonPunio;
-	private Icon iconoBomba;
-	private Icon iconoTanque;
-	private Icon iconoCampo;
-	private Icon iconoBoton;
+	protected ImageIcon imagenBotonBomba;
+	protected ImageIcon imagenBotonGuardarBomba;
+	protected ImageIcon imagenBotonGuardarFuerza;
+	protected ImageIcon imagenBotonGuardarCampo;
+	protected ImageIcon imagenBotonSalirJuego;
+	protected ImageIcon imagenBotonPunio;
+	protected ImageIcon imagenBotonFuerza;
+	protected ImageIcon imagenTanque;
+	protected ImageIcon imagenCampo;
+	protected ImageIcon imagenBoton;
+	protected ImageIcon imagenBomba;
+	protected Icon iconoBotonBomba;
+	protected Icon iconoBotonGuardarBomba;
+	protected Icon iconoBotonGuardarFuerza;
+	protected Icon iconoBotonGuardarCampo;
+	protected Icon iconoBotonSalirJuego;
+	protected Icon iconoBotonFuerza;
+	protected Icon iconoBotonPunio;
+	protected Icon iconoBomba;
+	protected Icon iconoTanque;
+	protected Icon iconoCampo;
+	protected Icon iconoBoton;
 	protected JPanel panel;
 	protected JPanel panel_1;
 	protected JPanel panel_2;
 	protected JPanel panel_3;
 	protected JLabel lblMonedas = new JLabel("0");
-	protected  JLabel lblPuntaje = new JLabel("0");
+	protected JLabel lblPuntaje = new JLabel("0");
 	protected JLabel lblCantBomba = new JLabel("0");
  
-	private int cantBombas = 0;
-	private int cantPiedra = 0;
- 
+	protected int cantBombas = 0;
+	protected int cantPiedra = 0;
+	protected int n;
 	
 	public void iniciar() {
 		try {
-			Mapa_GUI2 frame = new Mapa_GUI2();
+			Mapa_GUI2 frame = new Mapa_GUI2(n);
 			frame.setLocationRelativeTo(null);
 			frame.setVisible(true);
 		} catch (Exception e) {
@@ -81,7 +91,7 @@ public class Mapa_GUI2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Mapa_GUI2() {
+	public Mapa_GUI2(int n) {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1350, 700);
@@ -90,15 +100,40 @@ public class Mapa_GUI2 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		// P A N E L E S --------------------------------------------------------------------------------------------------------------------------------------------------------------
-		image4 = new ImageIcon(getClass().getResource("/Sprites/fondo/botoneraArriba.png")).getImage();
-		panel = new JPanel(){
-			public void paint(Graphics g){
-				g.drawImage(image4, 0, 0, panel.getWidth(), panel.getHeight(), this);
-				setOpaque(false);
-				super.paint(g);
-			}
-		};
+		if(n == 1) {
+			panel = new ImagenPanel1();
+			panel_1 = new ImagenPanel2();
+			panel_2 = new ImagenPanel4();
+			panel_3 = new ImagenPanel3();
+			logica = new Logica(panel_3,this);
+		}
+		//logica.setPanel(panel_3);
+		//logica.setGUI(this);
+		fondo();
+	}	
+	
+	public void modificarPaneles() {
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1350, 700);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		panel = new ImagenPanel1_2();
+		panel_1 = new ImagenPanel2_2();
+		panel_2 = new ImagenPanel4_2();
+		panel_3 = new ImagenPanel3_2();
+		logica.setPanel(panel_3);
+		logica.getMapaCombate().setPanelMapa(panel_3);
+		fondo();
+		System.out.println("Modifique paneles supuestamente");
+	}
+	
+	public Logica getLogica() {
+		return logica;
+	}
+	public void fondo() {
 		panel.setBorder(null);
 		panel.setBounds(334, 11, 1000, 76);
 		contentPane.add(panel);
@@ -157,16 +192,7 @@ public class Mapa_GUI2 extends JFrame {
 
 					}});
 			}};
-			botonCampo.addActionListener(a5);
-	 
-
-
-			
-			
-			
-			
-			
-		
+		botonCampo.addActionListener(a5);
 		JButton botonRobot = new JButton("");
 		 
 		botonRobot.setBounds(365, 0, 151, 76);
@@ -205,15 +231,7 @@ public class Mapa_GUI2 extends JFrame {
 			}
 		});
 		panel.add(button_2);
-		
-		image2 = new ImageIcon(getClass().getResource("/Sprites/fondo/baseMapa.png")).getImage();
-		panel_1 = new JPanel() {
-			public void paint(Graphics g){
-		        g.drawImage(image2, 0, 0, panel_1.getWidth(), panel_1.getHeight(), this);
-		        setOpaque(false);
-		        super.paint(g);
-		    }
-		};
+	
 		panel_1.setBorder(null);
 		panel_1.setBounds(10, 11, 325, 649);
 		contentPane.add(panel_1);
@@ -267,33 +285,18 @@ public class Mapa_GUI2 extends JFrame {
 		 * --------------------------------------------------------------------------------------------------------------------------
 		 */
 		
-		image3 = new ImageIcon(getClass().getResource("/Sprites/fondo/botoneraBajo.png")).getImage();
-		panel_2 = new JPanel(){
-			public void paint(Graphics g){
-				g.drawImage(image3, 0, 0, panel_2.getWidth(), panel_2.getHeight(), this);
-				setOpaque(false);
-				super.paint(g);
-			}
-		};
+		
 		panel_2.setBorder(null);
 		panel_2.setBounds(334, 584, 1000, 76);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
-		image = new ImageIcon(getClass().getResource("/Sprites/fondo/piso.png")).getImage();
-		panel_3 = new JPanel() {
-		public void paint(Graphics g){
-	        g.drawImage(image, 0, 0, panel_3.getWidth(), panel_3.getHeight(), this);
-	        setOpaque(false);
-	        super.paint(g);
-	    }
-		};
+		
 		panel_3.setLayout(null);
 		panel_3.setBorder(null);
 		panel_3.setBounds(334, 84, 1000, 500);
 		contentPane.add(panel_3);
 		
-		logica = new Logica(panel_3,this);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/boton.png"));
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/boton.png"));
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/boton.png"));
@@ -504,7 +507,8 @@ public class Mapa_GUI2 extends JFrame {
 					logica.accionMagia(filas, columnas);	
 				}		
 			}});
-	}
+	}	
+
 	
 	public void setMonedasGUI(int m ) {
 		lblMonedas.setText(""+m);
@@ -514,14 +518,7 @@ public class Mapa_GUI2 extends JFrame {
 		lblPuntaje.setText(""+m);
 	}
 	
-
-	public void fondo(int n) {
-	
-	}
-	
  
-  
-	
 	public void restarBombas () {
 		cantBombas--;
 		lblCantBomba.setText(""+cantBombas);

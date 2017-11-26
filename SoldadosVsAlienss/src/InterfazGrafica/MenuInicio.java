@@ -64,7 +64,7 @@ public class MenuInicio extends JFrame{
 		
 		botonSalir.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					dispose();
+					System.exit(0);
 				}
 		});
 		panelPrincipal.add(botonSalir);
