@@ -31,9 +31,7 @@ public abstract class Personaje extends Obstaculo{
 		objetoP = null;
 	}
 	
-	public void setPosicion (Celda pos) {
-		this.pos = pos;
-	}
+	
 	/*
 	public void setMagiaTemporal (MagiaTemporal m) {
 		magiaT = m;

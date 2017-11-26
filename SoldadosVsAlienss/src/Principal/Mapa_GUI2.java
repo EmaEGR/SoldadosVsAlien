@@ -201,7 +201,7 @@ public class Mapa_GUI2 extends JFrame {
 		button_2.setIcon(iconoBotonSalirJuego);
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				System.exit(0);
 			}
 		});
 		panel.add(button_2);

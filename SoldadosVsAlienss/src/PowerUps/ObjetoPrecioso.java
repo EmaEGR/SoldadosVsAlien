@@ -17,10 +17,10 @@ public  class ObjetoPrecioso extends Obstaculo {
 		}
 
 		 
-		public void  setCeldaMagia (Celda c) {
+		/**public void  setCeldaMagia (Celda c) {
 			this.pos = c;
 			
-		}
+		}**/
 		
 		public void accept(Visitor v) {	
 			

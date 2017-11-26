@@ -33,6 +33,7 @@ public class ObstaculoGrafico {
 	public JLabel getLabel (){
 		return label;
 	}
+	
 	public JLabel getGrafico(int dir) {
 	 if (label == null) {
 		label= new JLabel(image[dir]);

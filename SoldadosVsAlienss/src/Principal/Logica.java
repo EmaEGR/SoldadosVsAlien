@@ -25,8 +25,7 @@ import Factory.ParedFactory;
 import Factory.SoldadosFactoryMethod;
 import Factory.TanqueFactory;
 import Hilos.HiloActivarObjetoTemporal;
- 
- 
+import Hilos.HiloBomba;
 import Hilos.HiloLogico;
 import Hilos.HiloMagiaTemporaCampo;
 import Hilos.HiloMagiaTemporalFuerza;
@@ -61,9 +60,9 @@ public class Logica {
 	protected LinkedList<Bala> balasAlien;
 	protected LinkedList<ObjetoTemporal> listaObjetosTemporales;
 	protected LinkedList<ObjetoVidaComprar> listaObjetosComprarVida;
-	protected int cantBomba;
-	protected int cantCampo;
 	protected LinkedList<Bala> balasAeliminar;
+	protected LinkedList<ObjetoPrecioso> bombas;
+	protected LinkedList<ObjetoPrecioso> piedras;
 	protected JPanel panelMapa;
 	protected Mapa mapaCombate;
 	protected Estado estadoMagia;
@@ -91,6 +90,8 @@ public class Logica {
 		juegoActivo = true;
 		gui.setMonedasGUI(monedas);
 		
+		bombas = new LinkedList<ObjetoPrecioso>();
+		piedras = new LinkedList<ObjetoPrecioso>();
 		aliensMapa=new LinkedList<Alien>();
 		soldadosMapa= new LinkedList<Soldado>();
 		soldadosMapaS3= new LinkedList<S3>();
@@ -104,8 +105,6 @@ public class Logica {
 		listaObjetosComprarVida = new LinkedList<ObjetoVidaComprar>();
 		
 		nivel = 1;
-		cantBomba = 0;
-		cantCampo = 0;
 		cantEnemigos = 12;
 		cantOrdas = 1;
 		mapaCombate = new Mapa(filas,columnas,p);
@@ -147,7 +146,7 @@ public class Logica {
 		
 		gui.fondo(n);
 		this.nivel = n;
-		cantOrdas = 0;
+		cantOrdas = 1;
 		cantEnemigos = 12;
 		this.juegoActivo = true;
 		ejecutarHilos(true);	
@@ -189,6 +188,7 @@ public class Logica {
 		if ( aliensMapa.size() == 0) {
 			while ( aliensMapa.size() < 4)
 				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel,cantOrdas));	 
+			
 			cantOrdas++;
 		  }
 	 }
@@ -228,7 +228,7 @@ public class Logica {
 			if ( o == null  || o.dejoPasar(v)) {
 				mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
 				siguiente.setElemento(p);
-				p.setCelda(siguiente.getFila(), siguiente.getColumna());
+				p.setCelda(siguiente.getFila(),siguiente.getColumna());
 				p.actualizarGrafico(0);	
 			}
 		}else gameOver();
@@ -300,18 +300,13 @@ public class Logica {
 				}
 				else{
 					if ( o.getMagiaTemporal() != null) {
-						System.out.println("Encontre magia temporal ------"+o.getMagiaTemporal()+"Celda :"+siguiente.getFila()+ " - "+siguiente.getColumna());
 						mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getMagiaTemporal());
-						siguiente.setElemento(o.getMagiaTemporal());
 						o.getMagiaTemporal().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
 						mapaCombate.insertar(o.getMagiaTemporal().getGrafico(0));
-						System.out.println("Se inserto magia en celda siguiente ."+siguiente.getElemento());	
 					}
 					else {
 						if (o.getObjetoPrecioso() != null) {
-							System.out.println("Encontre un objeto Precioso ------");
 							mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
-							siguiente.setElemento(o.getObjetoPrecioso());
 							o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
 							mapaCombate.insertar(o.getObjetoPrecioso().getGrafico(0));
 						}
@@ -356,13 +351,11 @@ public class Logica {
 					else{
 						if ( o.getMagiaTemporal() != null) {
 							mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getMagiaTemporal());
-							siguiente.setElemento(o.getMagiaTemporal());
 							o.getMagiaTemporal().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
 							mapaCombate.insertar(o.getMagiaTemporal().getGrafico(0));
 						}
 						if (o.getObjetoPrecioso() != null) {
 							mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
-							siguiente.setElemento(o.getObjetoPrecioso());
 							o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
 							mapaCombate.insertar(o.getObjetoPrecioso().getGrafico(0));
 						}
@@ -394,14 +387,12 @@ public class Logica {
 					else{
 						if ( ov.getMagiaTemporal() != null) {
 							mapaCombate.setCeldaMapa(siguienteVecina.getFila(), siguienteVecina.getColumna(), ov.getMagiaTemporal());
-							siguienteVecina.setElemento(ov.getMagiaTemporal());
 							ov.getMagiaTemporal().getObstaculoGrafico().setPoint(siguienteVecina.getFila(), siguienteVecina.getColumna());
 							mapaCombate.insertar(ov.getMagiaTemporal().getGrafico(0));
 						}
 						
 						if (ov.getObjetoPrecioso() != null) {
 							mapaCombate.setCeldaMapa(siguienteVecina.getFila(), siguienteVecina.getColumna(), ov.getObjetoPrecioso());
-							siguienteVecina.setElemento(ov.getObjetoPrecioso());
 							ov.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguienteVecina.getFila(), siguienteVecina.getColumna());
 							mapaCombate.insertar(ov.getObjetoPrecioso().getGrafico(0));
 						}
@@ -427,7 +418,6 @@ public class Logica {
 	
 	public void moverDisparoSoldado(Bala p){
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
-		p.getCelda().setElemento(null);
 		  
 		if (siguiente != null) {
 			VisitorBalaSoldado v = new VisitorBalaSoldado();
@@ -436,17 +426,14 @@ public class Logica {
 			if (o == null || o.dejoPasar(v)){
 				mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
 				siguiente.setElemento(p);
-				p.setCelda(siguiente.getFila(), siguiente.getColumna());
+				p.setCelda(siguiente.getFila(),siguiente.getColumna());
 				p.actualizarGrafico(0);	
-			}
-			else {
-				balasAeliminar.addLast(p);
-				mapaCombate.eliminar(p);
 			}
 		}
 		else {
 			balasAeliminar.addLast(p);
 			mapaCombate.eliminar(p);
+			mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
 		}
 	 
 	}
@@ -473,7 +460,7 @@ public class Logica {
 					o.accept(v);
 					balasAeliminar.addLast(b);
 					mapaCombate.eliminar(b);
-					b.getCelda().setElemento(null);
+					mapaCombate.setCeldaMapa(c.getFila(), c.getColumna(), null);
 					if (o.getVida() <= 0){
 						cantEnemigos--;
 						o.actualizarGrafico(2);
@@ -639,24 +626,27 @@ public class Logica {
 	
 	public void activarBomba(int x, int y) {
 		Celda celda = mapaCombate.getCelda(x, y);
-		if (celda.getElemento() != null) {
-			Obstaculo b = new Bomba();
+		if (celda.getElemento() == null) {
+			ObjetoPrecioso b = bombas.getLast();
+			b.setPosicion(celda);
 			b.setCelda(x, y);
+			//b.getObstaculoGrafico().setPoint(celda.getFila(), celda.getColumna());	
 			mapaCombate.setCeldaMapa(x, y, b);
-			celda.setElemento(b);
-			LinkedList<Obstaculo> l = mapaCombate.activarBomba(celda,b);
+			mapaCombate.insertar(b.getGrafico(0));
+			LinkedList<Obstaculo> l = mapaCombate.activarBomba(celda);
 			while (l.size() > 0) {
 				Obstaculo o = l.removeFirst();
 				a_eliminarObstaculo.add(o);
 			}
-			mapaCombate.eliminar(b);
-			celda.setElemento(null);
+			bombas.removeLast();
+			HiloBomba h = new HiloBomba(this,b);
+			h.start();
 		}
 	}
 	
 	public void activarPiedra(int x, int y) {
 		Piedra p = new Piedra();
-		p.setCelda(x, y);
+		//p.setCelda(x, y);
 		mapaCombate.setCeldaMapa(x, y, p);
 		p.getCelda().setElemento(p);
 		mapaCombate.insertar(p.getGrafico(0));
@@ -757,6 +747,14 @@ public class Logica {
 			
 		}
 		
+	}
+	
+	public LinkedList<ObjetoPrecioso> getBombas(){
+		return bombas;
+	}
+	
+	public LinkedList<ObjetoPrecioso> getPiedras(){
+		return piedras;
 	}
 	
 }

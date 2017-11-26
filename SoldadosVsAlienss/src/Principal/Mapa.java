@@ -221,13 +221,12 @@ public class Mapa {
 					 FactoryBomba f4 = new FactoryBomba();
 					 p.setObjetoPrecioso(f4.crearObjetoPrecioso());
 				 }
-			 /*
 				 else 
 					 if (r == 4) {
 						 FactoryPiedra f5 = new FactoryPiedra();
 						 p.setObjetoPrecioso(f5.crearObjetoPrecioso());
 					 }
-					 */
+					 
 		 }
 	  return  p;
 	}
@@ -253,9 +252,9 @@ public class Mapa {
 		return getCelda(c.getFila(),col);
 	}
 	
-	public LinkedList<Obstaculo> activarBomba(Celda c,Obstaculo b) {
+	public LinkedList<Obstaculo> activarBomba(Celda c) {
 		
-		insertar(b.getGrafico(0));
+		
 		LinkedList<Obstaculo> eliminados = new LinkedList<Obstaculo>();
 		LinkedList<Celda> celdas = new LinkedList<Celda>();
 		

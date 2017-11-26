@@ -38,8 +38,7 @@ public class VisitorPremio  implements Visitor{
 	public void visit (Bomba b) {
  
 		System.out.println("Entre a visitar BOMBA ");
-		//l.getMapaCombate().eliminar(b);
-		//b.getCelda().setElemento(null);
+		l.getBombas().addLast(b);
 		l.getGui().incrementarBomba();
  
 	}
@@ -242,6 +241,7 @@ public class VisitorPremio  implements Visitor{
 	@Override
 	public void visit(Piedra p) {
 		// TODO Auto-generated method stub
+		l.getPiedras().addLast(p);
 		l.getGui().incrementarPiedra();
 	}
 

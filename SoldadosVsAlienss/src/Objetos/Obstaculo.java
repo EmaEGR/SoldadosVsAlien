@@ -37,9 +37,13 @@ public abstract class Obstaculo {
 	public MagiaTemporal getMagiaTemporal () {
 		return magiaT;
 	}
+	public void setPosicion(Celda p) {
+		pos = p;
+	}
 	
-	public void setPosicion(Celda pos ) {
-		this.pos = pos;
+	public void setCelda(int x, int y ) {
+		pos.set(x, y);
+		grafico.setPoint(x, y);
 	}
 	
 	public JLabel getGrafico(int n) {	
@@ -64,12 +68,6 @@ public abstract class Obstaculo {
 	public void actualizarGrafico(int n) {
 		  grafico.actualizarGrafico(n);
 		}
-	
-	
-	public void setCelda(int x, int y) {
-		pos.set(x, y);
-		grafico.setPoint(x,y);
-	}
 
 	public void setVida(float f) {
 		vida-=f;
