@@ -196,17 +196,9 @@ public class Logica {
 	
 	public void insertarEnemigos() {
 	 if (cantEnemigos != 0) {
-<<<<<<< HEAD
 		if ( aliensMapa.size() == 0) {
 			while ( aliensMapa.size() < 4)
 				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel,cantOrdas));	 
-			
-=======
-		if (aliensMapa.size() == 0) {
-			while ( aliensMapa.size() < 4) {
-				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel,cantOrdas));
-			}	 
->>>>>>> f1e5021cef690f44c6b73b333d76ebdad2d90ffe
 			cantOrdas++;
 		  }
 	 }
