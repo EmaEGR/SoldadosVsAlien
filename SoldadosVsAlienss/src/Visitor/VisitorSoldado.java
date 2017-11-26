@@ -13,6 +13,7 @@ import Personajes.Alien;
 	import Personajes.Personaje;
 	import Personajes.Soldado;
 import PowerUps.Bomba;
+import PowerUps.Campo_de_Proteccion;
 import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
 import PowerUps.Piedra;
@@ -203,6 +204,11 @@ import PowerUps.Piedra;
 	public boolean puedoPasar(Piedra p) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	@Override
+	public void visit(Campo_de_Proteccion c) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

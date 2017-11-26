@@ -10,6 +10,7 @@ import Objetos.ObjetoVida;
 import Objetos.ObjetoVidaComprar;
 import Personajes.*;
 import PowerUps.Bomba;
+import PowerUps.Campo_de_Proteccion;
 import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
 import PowerUps.Piedra;
@@ -29,6 +30,10 @@ public interface Visitor {
 	public void visit (Bomba b);
 	public void visit (Fuerza b);
 	public void visit (Piedra p);
+	public void visit (Campo_de_Proteccion c);
+ 
+
+
 
 
 	public boolean puedoPasar (ObjetoTemporal a);
