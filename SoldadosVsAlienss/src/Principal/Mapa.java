@@ -211,7 +211,8 @@ public class Mapa {
 		System.out.println("Celda = "+c);
 		p = factory.createPersonaje(c);
 		System.out.println("P2 = "+p);
-		 int r = (int) (Math.random() * 10)+1;
+		
+		 int r = 3;//(int) (Math.random() * 10)+1;
 		
 		 if (r == 1) {
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
@@ -264,14 +265,22 @@ public class Mapa {
 		LinkedList<Obstaculo> eliminados = new LinkedList<Obstaculo>();
 		LinkedList<Celda> celdas = new LinkedList<Celda>();
 		
-		celdas.addLast(getCelda(c.getFila()-1,c.getColumna()-1));
-		celdas.addLast(getCelda(c.getFila()-1,c.getColumna()));
-		celdas.addLast(getCelda(c.getFila()-1,c.getColumna()+1));
-		celdas.addLast(getCelda(c.getFila(),c.getColumna()-1));
-		celdas.addLast(getCelda(c.getFila(),c.getColumna()+1));
-		celdas.addLast( getCelda(c.getFila()+1,c.getColumna()-1));
-		celdas.addLast(getCelda(c.getFila()+1,c.getColumna()));
-		celdas.addLast(getCelda(c.getFila()+1,c.getColumna()+1));
+		if (getCelda(c.getFila()-1,c.getColumna()-1) != null)
+			celdas.addLast(getCelda(c.getFila()-1,c.getColumna()-1));
+		if (getCelda(c.getFila()-1,c.getColumna()) != null)
+			celdas.addLast(getCelda(c.getFila()-1,c.getColumna()));
+		if (getCelda(c.getFila()-1,c.getColumna()+1) != null)
+			celdas.addLast(getCelda(c.getFila()-1,c.getColumna()+1));
+		if (getCelda(c.getFila(),c.getColumna()-1) != null)
+			celdas.addLast(getCelda(c.getFila(),c.getColumna()-1));
+		if (getCelda(c.getFila(),c.getColumna()+1) != null)
+			celdas.addLast(getCelda(c.getFila(),c.getColumna()+1));
+		if (getCelda(c.getFila()+1,c.getColumna()-1) != null)
+			celdas.addLast( getCelda(c.getFila()+1,c.getColumna()-1));
+		if (getCelda(c.getFila()+1,c.getColumna()) != null)
+			celdas.addLast(getCelda(c.getFila()+1,c.getColumna()));
+		if (getCelda(c.getFila()+1,c.getColumna()+1) != null)
+			celdas.addLast(getCelda(c.getFila()+1,c.getColumna()+1));
 		
 		
 		VisitorBomba vb = new VisitorBomba();
@@ -281,7 +290,7 @@ public class Mapa {
 			if (o != null) {
 				if (o.puedoAtacar(vb)) {
 					o.actualizarGrafico(2);
-					celda.setElemento(null);			
+					setCeldaMapa(c.getFila(),c.getColumna(),null);			
 					eliminados.add(o);
 				}
 			}
