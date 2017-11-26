@@ -223,7 +223,6 @@ public class Logica {
 	}
 	
 	public void gano() {
-		
 		juegoActivo = false;
 		PanelGano p = new PanelGano();
 		p.setLocationRelativeTo(null);
@@ -766,7 +765,6 @@ public class Logica {
 			c.getElemento().accept(v);
 			mapaCombate.eliminar(c.getElemento());
 			c.setElemento(null);
-			
 		}
 		
 	}

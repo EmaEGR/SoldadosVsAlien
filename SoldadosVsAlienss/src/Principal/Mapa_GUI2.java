@@ -44,6 +44,7 @@ public class Mapa_GUI2 extends JFrame {
 	protected Image image2;
 	protected Image image3;
 	protected Image image4;
+	protected ImageIcon imagenBotonPiedra;
 	protected ImageIcon imagenBotonBomba;
 	protected ImageIcon imagenBotonGuardarBomba;
 	protected ImageIcon imagenBotonGuardarFuerza;
@@ -55,6 +56,7 @@ public class Mapa_GUI2 extends JFrame {
 	protected ImageIcon imagenCampo;
 	protected ImageIcon imagenBoton;
 	protected ImageIcon imagenBomba;
+	protected Icon iconoBotonPiedra;
 	protected Icon iconoBotonBomba;
 	protected Icon iconoBotonGuardarBomba;
 	protected Icon iconoBotonGuardarFuerza;
@@ -110,6 +112,8 @@ public class Mapa_GUI2 extends JFrame {
 		//logica.setPanel(panel_3);
 		//logica.setGUI(this);
 		fondo();
+		
+		
 	}	
 	
 	public void modificarPaneles() {
@@ -134,6 +138,7 @@ public class Mapa_GUI2 extends JFrame {
 		return logica;
 	}
 	public void fondo() {
+		
 		panel.setBorder(null);
 		panel.setBounds(334, 11, 1000, 76);
 		contentPane.add(panel);
@@ -236,10 +241,11 @@ public class Mapa_GUI2 extends JFrame {
 		panel_1.setBounds(10, 11, 325, 649);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
+		lblCantBomba.setForeground(Color.WHITE);
 		
 		
  
-		lblCantBomba.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCantBomba.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblCantBomba.setBounds(10, 455, 46, 14);
 		panel_1.add(lblCantBomba);
 		
@@ -273,13 +279,13 @@ public class Mapa_GUI2 extends JFrame {
 			}
 		});
 		
-		
-		
 		button_6.setBounds(0, 485, 104, 90);
 		imagenBotonBomba = new ImageIcon(getClass().getResource("/Sprites/botones/bomba.png"));
 		iconoBotonBomba = new ImageIcon(imagenBotonBomba.getImage().getScaledInstance(button_6.getWidth(), button_6.getHeight(), Image.SCALE_SMOOTH));
 		button_6.setIcon(iconoBotonBomba);
 		panel_1.add(button_6);
+		
+		
 		ImageIcon imagen = new ImageIcon(getClass().getResource("/Sprites/FondosYmenus/puntaje.png"));
 		/**
 		 * --------------------------------------------------------------------------------------------------------------------------
@@ -315,6 +321,41 @@ public class Mapa_GUI2 extends JFrame {
 		lblMonedas.setFont(new Font("Segoe UI Black", Font.BOLD, 13));
 		lblMonedas.setBounds(94, 71, 210, 24);
 		panel_1.add(lblMonedas);
+		
+		
+		
+		JButton button = new JButton("");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+					boolean estadoBoton7 = true;
+					public void mousePressed(MouseEvent e) {
+						if (estadoBoton7) {
+							int x=e.getX() ;
+							int y=e.getY() ;
+							int filas = y / 80;
+							int columnas = x  / 80;
+							logica.activarPiedra(filas,columnas);
+							estadoBoton7 = false;
+							restarPiedras();
+							System.out.println("Inserte Piedra");
+							
+						}
+
+					}});
+			}
+		});
+		button.setBounds(105, 485, 104, 90);
+		imagenBotonPiedra = new ImageIcon(getClass().getResource("/Sprites/botones/Piedra.png"));
+		iconoBotonPiedra = new ImageIcon(imagenBotonPiedra.getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH));
+		button.setIcon(iconoBotonPiedra);
+		panel_1.add(button);
+		
+		JLabel lblCantPiedra = new JLabel("0");
+		lblCantPiedra.setForeground(Color.WHITE);
+		lblCantPiedra.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblCantPiedra.setBounds(110, 455, 46, 14);
+		panel_1.add(lblCantPiedra);
 		
 		
 		// B O T O N E S    S O L D A D O S--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -538,6 +579,4 @@ public class Mapa_GUI2 extends JFrame {
 		cantPiedra--;
 		
 	}
-	
- 
 }

@@ -54,7 +54,7 @@ public class panelGameOver extends JFrame{
 		panelPrincipal.setLayout(null);
 		setBounds(100,30,800,500);
 		setLocationRelativeTo(null);
-		setVisible(true);
+		//setVisible(true);
 		
 		contenedor.add(panelPrincipal);
 		
