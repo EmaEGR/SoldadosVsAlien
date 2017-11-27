@@ -75,6 +75,7 @@ public class Mapa_GUI2 extends JFrame {
 	protected JLabel lblMonedas = new JLabel("0");
 	protected JLabel lblPuntaje = new JLabel("0");
 	protected JLabel lblCantBomba = new JLabel("0");
+	protected JLabel lblCantPiedra = new JLabel("0");
  
 	protected int cantBombas = 0;
 	protected int cantPiedra = 0;
@@ -268,10 +269,12 @@ public class Mapa_GUI2 extends JFrame {
 							int y=e.getY() ;
 							int filas = y / 80;
 							int columnas = x  / 80;
-							logica.activarBomba(filas,columnas);
-							estadoBoton6 = false;
-							restarBombas ();
-							System.out.println("Inserte bomba");
+							if (cantBombas > 0) {
+								logica.activarBomba(filas,columnas);
+								estadoBoton6 = false;
+								restarBombas ();
+								System.out.println("Inserte bomba");
+							}
 							
 						}
 
@@ -335,10 +338,12 @@ public class Mapa_GUI2 extends JFrame {
 							int y=e.getY() ;
 							int filas = y / 80;
 							int columnas = x  / 80;
-							logica.activarPiedra(filas,columnas);
-							estadoBoton7 = false;
-							restarPiedras();
-							System.out.println("Inserte Piedra");
+							if (cantPiedra > 0) {
+								logica.activarPiedra(filas,columnas);
+								estadoBoton7 = false;
+								restarPiedras();
+								System.out.println("Inserte Piedra");
+							}
 							
 						}
 
@@ -541,13 +546,15 @@ public class Mapa_GUI2 extends JFrame {
 		cantBombas++;
 		lblCantBomba.setText(""+cantBombas);
 	}
-	public void incrementarPiedra() {
+	public void incrementarPiedras() {
 		cantPiedra++;
+		lblCantPiedra.setText(""+cantPiedra);
 		 
 	}
 	
 	public void restarPiedras () {
 		cantPiedra--;
+		lblCantPiedra.setText(""+cantPiedra);
 		
 	}
 }

@@ -41,7 +41,7 @@ public class VisitorPremio  implements Visitor{
 	public void visit(Piedra p) {
 		System.out.println("Entre a visitar Piedra ");
 		l.getPiedras().addLast(p);
-		l.getGui().incrementarPiedra();
+		l.getGui().incrementarPiedras();
 		//l.getMapaCombate().eliminar(p);
 	}
 	
