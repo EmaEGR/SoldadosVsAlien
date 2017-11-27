@@ -39,34 +39,26 @@ public class VisitorPremio  implements Visitor{
 	}
  
 	public void visit(Piedra p) {
-		System.out.println("Entre a visitar Piedra ");
 		l.getPiedras().addLast(p);
 		l.getGui().incrementarPiedras();
-		//l.getMapaCombate().eliminar(p);
 	}
 	
 	public void visit (Bomba b) {
  
-		System.out.println("Entre a visitar BOMBA ");
 		l.getBombas().addLast(b);
 		l.getGui().incrementarBomba();
-		//l.eliminar(b);
 		 
  
 	}
 	
 	public void visit (Fuerza b) {
-		System.out.println("Entre a visitar FUERZA");
 		l.activarMagia_Fuerza();
-	//	l.eliminar(b);
 		 
 	}
 	
 	public void visit (Campo_de_Proteccion b ) {
-		System.out.println("Entre a visitar CAMPO PROTECCION");
 		l.activarMagia_Campo();
-		//l.eliminar(b);
-		 
+ 
 		 
 	}
  
@@ -107,7 +99,6 @@ public class VisitorPremio  implements Visitor{
 	
  	public void visit(Soldado a) {
 		int monedas = l.getMonedas();
-		//l.eliminar(a);
 		if ( a.getVida() != 100) {
 			monedas = l.getMonedas();
 			monedas += a.getVida()*0.5;

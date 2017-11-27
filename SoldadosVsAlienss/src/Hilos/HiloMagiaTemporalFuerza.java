@@ -27,10 +27,8 @@ public class HiloMagiaTemporalFuerza extends Thread {
 			this.execute = true;
 			 
 			while (execute) {			
-				System.out.println("Entre en magia temporal tiempo de espera---------------------- ");
 				l.setEstado_MTLogica(new EstadoFuerza());
 				Thread.sleep(10000);
-				System.out.println("Espere 5 temporal tiempo de espera---------------------- ");
 				l.setEstado_MTLogica(new EstadosinMagia());
 				execute = false;
 			}

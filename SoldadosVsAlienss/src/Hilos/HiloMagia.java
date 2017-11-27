@@ -29,7 +29,6 @@ public class HiloMagia extends Thread{
 			this.execute = true;
 			 
 			while (execute) {			
-				System.out.println("Entre a objetoPrecioso piedra");
 				Thread.sleep(6000);
 				if  ( ob != null)
 					l.eliminar(ob);

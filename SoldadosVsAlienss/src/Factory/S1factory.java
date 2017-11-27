@@ -18,7 +18,6 @@ protected JLabel l;
 		panel= p;
 	}
 	
-	//Cambie Personaje ->Soldado
 	public Soldado createPersonaje (Celda c) {
 		Soldado p = new S1(c);
 		c.setElemento(p);

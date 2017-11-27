@@ -12,8 +12,6 @@ public abstract class Personaje extends Obstaculo{
 	
 	protected float fuerza;
 	protected Estado myEstado;
-//	protected MagiaTemporal magiaT;
-//	protected ObjetoPrecioso objetoP;
 	protected int cantCeldas;
 	protected int distanciaAtaque;
 	
