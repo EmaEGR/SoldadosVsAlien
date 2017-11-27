@@ -4,7 +4,7 @@ import Personajes.Personaje;
 
 public class EstadosinMagia extends Estado {
 	//Cuando los personajes se encuentran sin magia, la cantidad de vida que se le extrae al personaje es:
-		// (el porcentaje de la fuerza del ataquante * la vida del personaje)
+	// (el porcentaje de la fuerza del ataquante * la vida del personaje)
 	 
 	public EstadosinMagia () {
 		

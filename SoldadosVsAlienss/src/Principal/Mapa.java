@@ -111,7 +111,6 @@ public class Mapa {
 	}
 	
 	public void insertarObjetos(Logica l, int n) {
-		System.out.println("Nivel = " +n);
 		 try {	
 			BufferedReader b;
 			FileReader f;
@@ -130,8 +129,6 @@ public class Mapa {
 		        	for (int i = 0; i < cadena.length(); i++){
 		      		   d = cadena.charAt(i);
 		      		   Celda c = getCelda(x,y);
-		      		   System.out.println("y = "+ y+ " x = "+x);
-		      		   System.out.println("Celda = "+c);
 		                if (d == 'f') {
 		                	obs= new ObjetoFuego(c);
 		                	HiloActivarObjetoTemporal h = new HiloActivarObjetoTemporal (l,obs);
@@ -173,7 +170,6 @@ public class Mapa {
 				v.setSoldado(s);
 				if ( mapa[c.getFila()][i].getElemento().puedoAtacar(v)) {
 					if (mapa[c.getFila()][i].getElemento().getVida() > 0 )
-						System.out.println("Encontre algo en la celda :"+ mapa[c.getFila()][i].getElemento());
 						toReturn = true;
 					}
 				
@@ -210,7 +206,6 @@ public class Mapa {
 		}
 		else {
 			if (orda == 1) {
-				System.out.println("Entre a crear alien 4");	
 				factory = new A4factory(panel);
 			}
 			else if (orda == 2)
@@ -219,9 +214,7 @@ public class Mapa {
 					 	factory = new A6factory(panel);
 			
 		}
-		System.out.println("Celda = "+c);
 		p = factory.createPersonaje(c);
-		System.out.println("P2 = "+p);
 		
 		 int r = (int) (Math.random() * 10)+1;
 		

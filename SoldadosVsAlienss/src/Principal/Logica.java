@@ -354,7 +354,6 @@ public class Logica {
 					
 					o.actualizarGrafico(2); 
 					a_eliminarObstaculo.addLast(o);
-					System.out.println("Se inserto magia en celda siguiente ultimo ."+siguiente.getElemento());
 
 				}	   
 			}
@@ -410,7 +409,6 @@ public class Logica {
 						monedas += o.getMonedas();
 						gui.setMonedasGUI(monedas);
 						gui.setPuntosGUI(puntos);*/
-						System.out.println("Despues -Puntos :"+puntos + " Monedas :"+monedas);
 						o.actualizarGrafico(2); 
 						a_eliminarObstaculo.addLast(o);
 
@@ -786,12 +784,10 @@ public class Logica {
 	public void accionMagia (int x, int y) {
 		
 		Celda c = mapaCombate.getCelda(x,y);
-		System.out.println(c.getElemento()+" acicona magia");
 		VisitorPremio v = new VisitorPremio (this);
 		if (c.getElemento()!=null) { 
 			c.getElemento().accept(v);
 			mapaCombate.eliminar(c.getElemento());
-			//c.setElemento(null);
 		}
 	}
 	

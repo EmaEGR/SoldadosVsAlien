@@ -11,7 +11,6 @@ public class Bomba extends ObjetoPrecioso{
 	}
 
 	public void accept(Visitor v) {
-		System.out.println("Etre aacep Bomba");
 	  v.visit(this);
 	}
 		
