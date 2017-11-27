@@ -171,7 +171,7 @@ public class Logica {
 	
 
 	public void insertarObjetos() {
-		mapaCombate.insertarObjetos(this);
+		mapaCombate.insertarObjetos(this,nivel);
 	}
 		
 	public void limpiarBalasSoldado() {
@@ -214,9 +214,7 @@ public class Logica {
 	 }
 	 else { juegoActivo = false;
 	 		if (nivel == 1) {
-	 			System.out.println("Nivel = "+nivel);
 	 			setNivel(2);
-	 			System.out.println("Nivel2 = "+nivel);
 	 			PanelNivel2 p = new PanelNivel2(gui);
 	 			p.setLocationRelativeTo(null);
 	 			p.setVisible(true);

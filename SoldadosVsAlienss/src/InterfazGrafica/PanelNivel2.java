@@ -65,6 +65,7 @@ public class PanelNivel2 extends JFrame{
 				gui.modificarPaneles();
 				gui.getLogica().setJuegoActivo(true);
 				gui.getLogica().ejecutarHilos(true);
+				
 				gui.setLocationRelativeTo(null);
 				gui.setVisible(true);
 				setVisible(false);
