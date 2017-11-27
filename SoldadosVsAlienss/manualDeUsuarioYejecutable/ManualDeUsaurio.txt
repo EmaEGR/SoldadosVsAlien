@@ -1,0 +1,49 @@
+/**------------------------------------------------Policias___VS___Aliens--------------------------------------------------**/
+
+1-Sobre la ejecución del juego:
+  *Para poder ejecutar el juego debera abrir la clase "EjecutarJuego.java" (clase principal del juego) dentro de la
+   carpeta src del juego, debido a que no se a podido exportar con exito el archivo ejecutable .Jar del juego ya que 
+   al iniciar el panel del nivel 1 no se muestran los objetos propios del mapa y se desconoce dicho motivo.
+   
+
+2-Cuando el juego comienze, aparecera el menu del juego en el cual aparecerán los botones "Jugar" y "Salir":
+	*Si pulsa "Jugar" aparecerá el cartel de "Nivel 1".
+	*Si pulsa "Salir" la aplicación se cerrará.
+
+3-Cuando aparezca el cartel de "Nivel 1" aparecerán en él los botones "<-" y "->":
+	*Si pulsa "<-" la aplicación se volverá a ubicar en el menu de inicio.
+	*Si pulsa "->" arrancara la interfaz del nivel 1 del jugo.
+
+4-Cuando arranque el nivel 1 deberá comenzar a ubicar los soldados o los objetos para comprar en la tienda del juego 
+a medida que las ordas de aliens vayan ingresando.
+ 	*Cuando se mate un alien y éste arrojeuna magia / objeto precioso, debera pulsar sobre dicha para guardarla en el 
+	almacen de objetos preciosos (ubicada en el panel de "Puntaje" y "Monedas" del juego) en caso de que lo accionado sea un objeto precioso,
+	 si es una magia tendrá accion inmediata sobre los soldados por un determinado tiempo.
+	*Cuando se quiera usar la magia que se guardo debera pulsar el botón que corresponda y luego pulsar una posición
+	en el mapa de combate para ubicarla.
+
+5-Para vender un soldado, solamente tendrá que realizar un click sobre el.
+
+6- Si alguno de los aliens que haya ingresado llega a la base de los policias en algun momento, usted habra perdido el juego.
+Esto se le mostrará en un panel, indicando que perdió y pudiendo volver al menu principal o cerrar la aplicacion.
+	*Este panel contiene los botones "VolverAlMenu" y "Salir".
+	*Si se pulsa "VolverAlMenu" el juego volverá al menú principal y deberá volver a comenzar con el juego.
+	*Si se pulsa "Salir" la aplicación se cerrará.
+
+7- Si se logra matar a todos los aliens que hayan ingresado aparecerá un panel para seguir con el nivel 2.
+	*Este panel contiene los botones "VolverAlMenu" y "->".
+	*Si se pulsa "VolverAlMenu" el juego volvera al menú principal y deberá volver a comenzar con el juego.
+	*Si se pulsa "->" se lanzara la interfaz del nivel 2 del juego.
+
+8- Cuando comience el nivel 2 deberá realizar los mismos pasos que en el nivel 1 y ganará el juego si logra matar a todas las
+ordas de aliens que ingresen.
+	*Se le mostrará el panel indicando que ganó y dando como opción volver al menú principal o salir del juego.
+	*Si alguno de los aliens llega a la base de los policias, usted habrá perdido el juego.
+
+
+
+
+Limitaciones:
+ * Si realiza click sobre algun elemento del mapa / alien se lo eliminará 
+ * Los soldados que disparan se recomiendan crearlos a una distancia minima de 4 celdas para poder lograr un efectivo disparo.
+ * La bomba tendrá efecto cuando los aliens esten detenidos.
