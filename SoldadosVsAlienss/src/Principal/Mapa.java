@@ -200,7 +200,7 @@ public class Mapa {
 		else {
 			if (orda == 1) {
 				System.out.println("Entre a crear alien 4");	
-				factory = new A5factory(panel);
+				factory = new A4factory(panel);
 			}
 			else if (orda == 2)
 					factory = new A5factory(panel);

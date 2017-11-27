@@ -790,14 +790,15 @@ public class Logica {
 		Celda c = mapaCombate.getCelda(x,y);
 		System.out.println(c.getElemento()+" acicona magia");
 		VisitorPremio v = new VisitorPremio (this);
+		if (c.getElemento()!=null) 
+			c.getElemento().accept(v);
  
 		if (c.getElemento()!=null) {
 			c.getElemento().accept(v);
 			mapaCombate.eliminar(c.getElemento());
 			//c.setElemento(null);
 		}
-  
-		
+ 		
 	}
 	
 	public void eliminar (Obstaculo o ) {
