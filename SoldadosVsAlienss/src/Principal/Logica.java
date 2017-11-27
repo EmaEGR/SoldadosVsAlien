@@ -15,7 +15,7 @@ import Disparo.Bala;
  
 import Estate.Estado;
 import Estate.EstadoCampo;
-
+import Estate.EstadosinMagia;
 import Factory.AlienFactoryMethod;
  
 import Factory.BalasFactoryMethod;
@@ -114,7 +114,7 @@ public class Logica {
 		cantOrdas = 1;
 		mapaCombate = new Mapa(filas,columnas,p);
 		
-		estadoMagia = new EstadoCampo();
+		estadoMagia = new EstadosinMagia();
 		ejecutarHilos(juegoActivo);
 	
 	
