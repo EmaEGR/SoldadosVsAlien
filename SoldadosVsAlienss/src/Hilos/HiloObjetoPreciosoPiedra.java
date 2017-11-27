@@ -31,8 +31,8 @@ public class HiloObjetoPreciosoPiedra extends Thread{
 			while (execute) {			
 				System.out.println("Entre a objetoPrecioso piedra");
 				Thread.sleep(10000);
-				if  ( ob != null)
-					l.eliminar(ob);
+				l.eliminar(ob);
+				l.getPiedras().remove(ob);
 				execute = false;
 			}
 			} catch (InterruptedException e2) {

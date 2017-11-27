@@ -161,7 +161,7 @@ public class Mapa {
 				VisitorSoldado v = new VisitorSoldado();
 				v.setSoldado(s);
 				if ( mapa[c.getFila()][i].getElemento().puedoAtacar(v)) {
-					if (mapa[c.getFila()][i].getElemento().getVida() >0 )
+					if (mapa[c.getFila()][i].getElemento().getVida() > 0 )
 						System.out.println("Encontre algo en la celda :"+ mapa[c.getFila()][i].getElemento());
 						toReturn = true;
 					}
