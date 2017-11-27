@@ -33,7 +33,6 @@ import PowerUps.Piedra;
 	
 	//---------------------------------------------------Visit----------------------------------------------
 	public void visit(Alien a) {
-		//System.out.println("VISITOR SOLDADO : Fuerza Soldado"+mySoldado.getFuerza()+" Fuerza Alien:"+a.getFuerza()+" Vida Alien :"+a.getVida()+ " Vida Soldado :"+mySoldado.getVida());
 		myEstado.disminuirVida(mySoldado.getFuerza(),a);
 		 
 	}
