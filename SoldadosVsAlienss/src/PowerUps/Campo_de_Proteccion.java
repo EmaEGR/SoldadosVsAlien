@@ -13,7 +13,6 @@ public class Campo_de_Proteccion  extends MagiaTemporal{
 	}
 	
 	public void accept(Visitor v) {
-		System.out.println("Etre aacep campo");
 		v.visit(this);	
 	}
 

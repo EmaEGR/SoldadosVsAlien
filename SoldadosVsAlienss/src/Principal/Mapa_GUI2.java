@@ -37,7 +37,6 @@ import javax.swing.SwingConstants;
 
 public class Mapa_GUI2 extends JFrame {
 	
-	//protected cambiarGUI c;
 	protected Logica logica;
 	protected JPanel contentPane;
 	protected Image image;
@@ -110,8 +109,6 @@ public class Mapa_GUI2 extends JFrame {
 			panel_3 = new ImagenPanel3();
 			logica = new Logica(panel_3,this);
 		}
-		//logica.setPanel(panel_3);
-		//logica.setGUI(this);
 		fondo();
 		
 		
@@ -132,7 +129,7 @@ public class Mapa_GUI2 extends JFrame {
 		logica.setPanel(panel_3);
 		logica.getMapaCombate().setPanelMapa(panel_3);
 		fondo();
-		System.out.println("Modifique paneles supuestamente");
+
 	}
 	
 	public Logica getLogica() {
@@ -161,9 +158,7 @@ public class Mapa_GUI2 extends JFrame {
 							int y=e.getY() ;
 							int filas = y / 80;
 							int columnas = x  / 80;
-							if (!logica.comprarTanque(filas,columnas)) {
-								System.out.println("No pudo comprar jugador 1 ");
-							}
+							logica.comprarTanque(filas,columnas);
 						  estadoBoton1 = false;
 						}
 
@@ -190,9 +185,7 @@ public class Mapa_GUI2 extends JFrame {
 							int y=e.getY() ;
 							int filas = y / 80;
 							int columnas = x  / 80;
-							if (!logica.comprarPared(filas,columnas)) {
-								System.out.println("No pudo comprar jugador 1 ");
-							}
+							logica.comprarPared(filas,columnas);
 						  estadoBoton1 = false;
 						}
 
@@ -216,9 +209,7 @@ public class Mapa_GUI2 extends JFrame {
 							int y=e.getY() ;
 							int filas = y / 80;
 							int columnas = x  / 80;
-							if (!logica.comprarRobot(filas,columnas)) {
-								System.out.println("No 1 ");
-							}
+							logica.comprarRobot(filas,columnas);
 						  estadoBoton1 = false;
 						}
 
@@ -273,7 +264,6 @@ public class Mapa_GUI2 extends JFrame {
 								logica.activarBomba(filas,columnas);
 								estadoBoton6 = false;
 								restarBombas ();
-								System.out.println("Inserte bomba");
 							}
 							
 						}
@@ -342,8 +332,7 @@ public class Mapa_GUI2 extends JFrame {
 								logica.activarPiedra(filas,columnas);
 								estadoBoton7 = false;
 								restarPiedras();
-								System.out.println("Inserte Piedra");
-							}
+								}
 							
 						}
 
@@ -356,13 +345,13 @@ public class Mapa_GUI2 extends JFrame {
 		button.setIcon(iconoBotonPiedra);
 		panel_1.add(button);
 		
-		JLabel lblCantPiedra = new JLabel("0");
 		lblCantPiedra.setForeground(Color.WHITE);
 		lblCantPiedra.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblCantPiedra.setBounds(110, 455, 46, 14);
 		panel_1.add(lblCantPiedra);
 		
 		
+
 		// B O T O N E S    S O L D A D O S--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 		JButton botonSoldado1 = new JButton();
@@ -382,9 +371,7 @@ public class Mapa_GUI2 extends JFrame {
 							int y=e.getY() ;
 							int filas = y / 80;
 							int columnas = x  / 80;
-							if (!logica.crearS1(filas,columnas)) {
-								System.out.println("No pudo comprar jugador 1 ");
-							}
+							logica.crearS1(filas,columnas);
 						  estadoBoton1 = false;
 						}
 
@@ -410,9 +397,7 @@ public class Mapa_GUI2 extends JFrame {
 								int y=e.getY() ;
 								int filas = y / 80;
 								int columnas = x  / 80;
-								if (!logica.crearS2(filas,columnas)) {
-									System.out.println("No pudo comprar jugador 2 ");
-								}
+								logica.crearS2(filas,columnas);
 							  estadoBoton2 = false;
 							}
 
@@ -437,9 +422,7 @@ public class Mapa_GUI2 extends JFrame {
 								int y=e.getY() ;
 								int filas = y / 80;
 								int columnas = x  / 80;
-								if (!logica.crearS3(filas,columnas)) {
-									System.out.println("No pudo comprar jugador 3 ");
-								}
+								logica.crearS3(filas,columnas);
 							  estadoBoton3 = false;
 							}
 
@@ -468,9 +451,7 @@ public class Mapa_GUI2 extends JFrame {
 								int y=e.getY() ;
 								int filas = y / 80;
 								int columnas = x  / 80;
-								if (!logica.crearS4(filas,columnas)) {
-									System.out.println("No pudo comprar jugador 4 ");
-								}
+								logica.crearS4(filas,columnas);
 							  estadoBoton4 = false;
 							}
 
@@ -500,9 +481,7 @@ public class Mapa_GUI2 extends JFrame {
 								int y=e.getY() ;
 								int filas = y / 80;
 								int columnas = x  / 80;
-								if (!logica.crearS5(filas,columnas)) {
-									System.out.println("No pudo comprar jugador 5 ");
-								}
+								logica.crearS5(filas,columnas);
 								estadoBoton5 = false;
 								
 							}
@@ -520,7 +499,6 @@ public class Mapa_GUI2 extends JFrame {
 					int y=e.getY() ;
 					int filas = y / 80;
 					int columnas = x  / 80;
-					System.out.println(filas +" - "+ columnas);
 					logica.accionMagia(filas, columnas);	
 				}		
 			}});

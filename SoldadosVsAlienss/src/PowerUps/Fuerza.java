@@ -15,7 +15,6 @@ public class Fuerza extends MagiaTemporal {
 
 	
 	public void accept(Visitor v) {
-		System.out.println("Etre aacep fuerza");
 	  v.visit(this);
 		
 	}
