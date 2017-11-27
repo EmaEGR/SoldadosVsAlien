@@ -505,35 +505,6 @@ public class Mapa_GUI2 extends JFrame {
 						}});
 				}};
 			botonSoldado5.addActionListener(a75);
-		
-			
-			
-			
-			JButton botonVender = new JButton();
-			botonVender.setBounds(684, 11, 306, 54);
-			botonVender.setContentAreaFilled(false);
-			imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botonVenderSoldado.png"));
-			iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonVender.getWidth(), botonVender.getHeight(), Image.SCALE_SMOOTH));
-			botonVender.setIcon(iconoBoton);
-			panel_2.add(botonVender);
-			botonVender.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-						boolean estadoBoton = true;
-						public void mousePressed(MouseEvent e) {
-							if ( estadoBoton) {
-								estadoBoton = false;
-								int x=e.getX() ;
-								int y=e.getY() ;
-								int filas = y / 80;
-								int columnas = x  / 80;
-								if (logica.verificarPosicion(filas, columnas)) {
-									System.out.println("Encontre soldado a eliminar y elimino ");
-								}
-							}
-						}});
-				}});
-			
 			
 			panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
 			boolean estadoBoton = true;

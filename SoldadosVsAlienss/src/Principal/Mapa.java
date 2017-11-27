@@ -110,11 +110,18 @@ public class Mapa {
 		mapa[x][y].setElemento(o);
 	}
 	
-	public void insertarObjetos(Logica l) {
-
+	public void insertarObjetos(Logica l, int n) {
+		System.out.println("Nivel = " +n);
 		 try {	
-			FileReader f = new FileReader(getClass().getResource("/Archivos/mapa1.txt").getFile());
-	        BufferedReader b = new BufferedReader(f);
+			BufferedReader b;
+			FileReader f;
+			if(n == 1) { 
+				f = new FileReader(getClass().getResource("/Archivos/mapa1.txt").getFile());
+				b = new BufferedReader(f);
+			}else {
+				f = new FileReader(getClass().getResource("/Archivos/mapa2.txt").getFile());
+				b = new BufferedReader(f);
+			}
 	        String cadena = "";
 	        char d;
 	        int y = 0;
@@ -122,7 +129,9 @@ public class Mapa {
 	        		int x = 0;
 		        	for (int i = 0; i < cadena.length(); i++){
 		      		   d = cadena.charAt(i);
-		      		   Celda c = getCelda(y,x);
+		      		   Celda c = getCelda(x,y);
+		      		   System.out.println("y = "+ y+ " x = "+x);
+		      		   System.out.println("Celda = "+c);
 		                if (d == 'f') {
 		                	obs= new ObjetoFuego(c);
 		                	HiloActivarObjetoTemporal h = new HiloActivarObjetoTemporal (l,obs);
@@ -151,6 +160,8 @@ public class Mapa {
 	 System.out.println("Error en objeto - leerArchivo. ");
    }	 
 }
+	
+	
 	//VERRR
 	public boolean puedeDisparar (Soldado s) {
 		boolean toReturn = false;

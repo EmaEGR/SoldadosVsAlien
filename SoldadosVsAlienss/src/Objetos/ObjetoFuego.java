@@ -13,5 +13,4 @@ public class ObjetoFuego extends ObjetoTemporal{
 	}
 	
 	
-	
 }
